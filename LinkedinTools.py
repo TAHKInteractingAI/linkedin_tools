@@ -4,6 +4,11 @@ import requests
 from LinkedIn_group_Feature123 import Login_Linkedin, get_groups, auto_join_group, datetime, driver_Profile, auto_connect
 from Auto_post_group import post_and_get_link_in_group
 
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
+
+
 class Application(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
@@ -30,7 +35,7 @@ class Application(tk.Frame):
         self.quit.pack()
 
 start_time = datetime.now()
-driver = driver_Profile('No')
+driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 root = tk.Tk()
 app = Application(master=root)
 app.master.title("LinkedIn auto tools")
